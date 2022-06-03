@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+
+<body>
+    <th:block th:include="fragments/navbarr"></th:block>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Customer</h3>
+                            <form th:action="@{/resort-service/create}" method="post" th:object="${serviceResortDto}">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="ServiceName">Service</label>
+                                            <input type="text" id="ServiceName" class="form-control form-control-lg"
+                                                th:field="*{serviceResortName}" placeholder="Service name" />
+                                            <label th:if="${#fields.hasErrors('serviceResortName')}" th:errors="*{serviceResortName}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="Area">Area</label>
+                                            <input type="number" id="Area" class="form-control form-control-lg"
+                                                th:field="*{serviceResortArea}" placeholder="Identify card" />
+                                            <label th:if="${#fields.hasErrors('serviceResortArea')}" th:errors="*{serviceResortArea}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                                        <div class="form-outline datepicker w-100">
+                                            <label for="Cost" class="form-label">Cost</label>
+                                            <input type="text" class="form-control form-control-lg" id="Cost"
+                                                th:field="*{serviceResortCost}" placeholder="Birthday" />
+                                            <label th:if="${#fields.hasErrors('serviceResortCost')}" th:errors="*{serviceResortCost}"></label>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                                        <div class="form-outline datepicker w-100">
+                                            <label for="Other" class="form-label">Other</label>
+                                            <input type="text" class="form-control form-control-lg" id="Other"
+                                                   th:field="*{descriptionOtherConvenience}" placeholder="Birthday" />
+                                            <label th:if="${#fields.hasErrors('descriptionOtherConvenience')}" th:errors="*{descriptionOtherConvenience}"></label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="MaxPeople">Max people</label>
+                                            <input type="number" id="MaxPeople" class="form-control form-control-lg"
+                                                th:field="*{serviceResortMaxPeople}" placeholder="Email" />
+                                            <label th:if="${#fields.hasErrors('serviceResortMaxPeople')}" th:errors="*{serviceResortMaxPeople}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="StandardRoom">Standard Room</label>
+                                            <input type="text" id="StandardRoom" class="form-control form-control-lg"
+                                                th:field="*{standardRoom}" placeholder="Address" />
+                                            <label th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="PoolArea">Pool Area</label>
+                                            <input type="number" id="PoolArea" class="form-control form-control-lg"
+                                                   th:field="*{poolArea}" placeholder="Email" />
+                                            <label th:if="${#fields.hasErrors('poolArea')}" th:errors="*{poolArea}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="NumberFloors">Number Floors</label>
+                                            <input type="number" id="NumberFloors" class="form-control form-control-lg"
+                                                   th:field="*{numberOfFloors}" placeholder="Address" />
+                                            <label th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label select-label">Customer type</label>
+                                            <select class="select form-control-lg"
+                                                    th:field="*{serviceTypeId}">
+                                                <option value="1" disabled>Choose option</option>
+                                                <option th:each="c : ${serviceType}"
+                                                        th:value="${c.getServiceTypeId()}" th:text="${c.getServiceTypeName()}"
+                                                        th:selected="${c.getServiceTypeId() == serviceResortDto.serviceTypeId.getServiceTypeId()}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label select-label">Customer type</label>
+                                            <select class="select form-control-lg"
+                                                    th:field="*{rentTypeId}">
+                                                <option value="1" disabled>Choose option</option>
+                                                <option th:each="c : ${rentType}"
+                                                        th:value="${c.getRentTypeId()}" th:text="${c.getRentTypeName()}"
+                                                        th:selected="${c.getRentTypeId() == serviceResortDto.rentTypeId.getRentTypeId()}"></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
