@@ -2,6 +2,7 @@ package com.codegym.furama_resort_spring.dto;
 
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class ResortServicesDto {
 
@@ -19,7 +20,25 @@ public class ResortServicesDto {
     private ServiceType serviceTypeId;
 
 
-    private RentType rentTypeId;
+    private RentTypeDto rentTypeId;
 
-    List<Contract> contractList = new ArrayList<>();
+    List<ContractDto> contractList = new ArrayList<>();
+
+    public ResortServicesDto() {
+    }
+
+    public ResortServicesDto(Long resortServiceId , String resortServiceName , float resortServiceArea , double resortServiceCost , int resortServiceMaxPeople , String standardRoom , String descriptionOtherConvenience , String poolArea , String numberOfFloors , ServiceType serviceTypeId , RentTypeDto rentTypeId , List<ContractDto> contractList) {
+        this.resortServiceId = resortServiceId;
+        this.resortServiceName = resortServiceName;
+        this.resortServiceArea = resortServiceArea;
+        this.resortServiceCost = resortServiceCost;
+        this.resortServiceMaxPeople = resortServiceMaxPeople;
+        this.standardRoom = standardRoom;
+        this.descriptionOtherConvenience = descriptionOtherConvenience;
+        this.poolArea = poolArea;
+        this.numberOfFloors = numberOfFloors;
+        this.serviceTypeId = serviceTypeId;
+        this.rentTypeId = rentTypeId;
+        this.contractList = contractList;
+    }
 }
