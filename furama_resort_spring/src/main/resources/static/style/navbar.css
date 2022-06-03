@@ -1,0 +1,149 @@
+/* .hover-underline-animation {
+  display: inline-block;
+  position: relative;
+  color: #0087ca;
+}
+
+.hover-underline-animation:after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+.hover-underline-animation:hover:after {
+  transform: scaleX(1);
+  transform-origin: bottom left;
+} */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color: rgb(255, 255, 255);
+}
+
+body {
+  background-image: linear-gradient(to right, #2d3953, #141d2d, #0d131e);
+  color: rgb(255, 255, 255);
+}
+
+.navbar {
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+}
+
+.container-fluid {
+  width: 95%;
+}
+
+ul {
+  display: flex;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+
+ul:hover li:not(:hover) a {
+  opacity: 0.2;
+}
+
+ul li {
+  position: relative;
+  cursor: pointer;
+}
+
+ul li::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  transform: scaleX(0);
+  height: 2px;
+  border-radius: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #0087ca;
+  transform-origin: bottom right;
+  transition: transform 0.25s ease-out;
+}
+
+ul li:hover::after,
+ul li.active::after {
+  transform: scaleX(1);
+  height: 3px;
+  transform-origin: bottom left;
+  border-radius: 2px;
+}
+
+ul li a {
+  position: relative;
+  display: flex;
+  color: white;
+  font-family: Lato, sans-serif;
+  text-decoration: none;
+  transition: 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.nav-item {
+  font-weight: bold;
+}
+
+.logo {
+  margin-right: 1%;
+}
+
+.card {
+  border-radius: 10px;
+  margin: 10px;
+  background-color: #2f384e;
+  height: 100%;
+}
+
+.card-registration .select-input.form-control[readonly]:not([disabled]) {
+  font-size: 1rem;
+  line-height: 2.15;
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
+
+.card-registration .select-arrow {
+  top: 13px;
+}
+
+.select {
+  color: black;
+}
+
+option {
+  color: #000;
+}
+
+.btn-create {
+  margin: 10px;
+}
+
+.card-add {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-add {
+  width: 50%;
+  height: 50%;
+  border: 5px;
+  border-radius: 20%;
+  background-color: Transparent;
+  background-repeat: no-repeat;
+}
+
+.btn-link .card-link a {
+  text-decoration: none;
+  font-weight: bolder;
+}
