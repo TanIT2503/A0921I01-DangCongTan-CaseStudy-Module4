@@ -1,5 +1,6 @@
 package com.codegym.furamaresortspring.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,22 +21,19 @@ public class Employee {
     private String employeeId;
     private String employeeName;
     private Date employeeBirthday;
-    private long employeeIdentifyCard;
+    private String employeeIdentifyCard;
     private double employeeSalary;
     private String employeeNumberPhone;
     private String employeeEmail;
     private String employeeAddress;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "positionId", referencedColumnName = "positionId")
+    @ManyToOne(targetEntity = Position.class)
     private Position positionId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "educationDegreeId", referencedColumnName = "educationDegreeId")
+    @ManyToOne(targetEntity = EducationDegree.class)
     private EducationDegree educationDegreeId;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "divisionId", referencedColumnName = "divisionId")
+    @ManyToOne(targetEntity = Division.class)
     private Division divisionId;
 
     @OneToOne(cascade = CascadeType.ALL)
@@ -43,5 +41,6 @@ public class Employee {
     private User userName;
 
     @OneToMany(mappedBy = "employeeId")
+    @JsonBackReference
     List<Contract> contractList = new ArrayList<>();
 }

@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -19,6 +21,6 @@ public class EducationDegree {
     private Long educationDegreeId;
     private String educationDegreeName;
 
-    @OneToOne(mappedBy = "educationDegreeId")
-    private Employee employee;
+    @OneToMany(mappedBy = "educationDegreeId")
+    private List<Employee> employees = new ArrayList<>();
 }

@@ -16,11 +16,16 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import javax.persistence.EntityManager;
 import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+
+    @Autowired
+    private EntityManager entityManager;
+
     @Autowired
     CustomerService customerService;
     @Autowired
@@ -29,13 +34,13 @@ public class CustomerController {
     CustomerTypeRepository customerTypeRepository;
 
     @GetMapping("/home")
-    public String showListCustomer(Model model){
-        List<Customer>customers = customerService.findAll();
+    public String showListCustomer(@RequestParam(defaultValue = "") String key_customerName, Model model){
+        List<Customer>customers = customerService.findAllByNameAndType(key_customerName);
         model.addAttribute("customers", customers);
         model.addAttribute("customerType", customerTypeService.findAll());
+        model.addAttribute("key_customerName", key_customerName);
         return "/customer/home";
     }
-
     @GetMapping("/create")
     public String create(Model model){
         CustomerDto customerDto = new CustomerDto();

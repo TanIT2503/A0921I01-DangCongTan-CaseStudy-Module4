@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +20,6 @@ public class Position {
     private Long positionId;
     private String positionName;
 
-    @OneToOne(mappedBy = "positionId")
-    private Employee employee;
+    @OneToMany(mappedBy = "positionId")
+    private List<Employee> employees = new ArrayList<>();
 }

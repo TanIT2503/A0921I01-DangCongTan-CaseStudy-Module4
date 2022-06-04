@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -18,6 +20,6 @@ public class Division {
     private Long divisionId;
     private String divisionName;
 
-    @OneToOne(mappedBy = "divisionId")
-    private Employee employee;
+    @OneToMany(mappedBy = "divisionId")
+    private List<Employee> employees = new ArrayList<>();
 }

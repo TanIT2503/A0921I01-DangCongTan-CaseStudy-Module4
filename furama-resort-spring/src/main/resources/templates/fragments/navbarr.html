@@ -1,4 +1,4 @@
-<nav class="shadow navbar fixed-top navbar-expand-lg navbar-light" style="box-shadow: 50px;">
+<nav th:fragment="header" class="shadow navbar fixed-top navbar-expand-lg navbar-light" style="box-shadow: 50px;">
     <div class="container-fluid">
         <img src="/assets/logo.png" alt="" width="100" class="d-inline-block align-text-top logo">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -20,7 +20,7 @@
                 </div>
                 <div class="pr-3">
                     <li class="nav-item">
-                        <a class="nav-link hover-underline-animation" href="" style="color: white;">Employee</a>
+                        <a class="nav-link hover-underline-animation" href="/employee/list" style="color: white;">Employee</a>
                     </li>
                 </div>
                 <div class="pr-3">
@@ -35,8 +35,8 @@
                 </div>
 
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" th:method="get" th:action="@{/customer/home}">
+                <input th:name="key_customerName" class="form-control mr-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
         </div>

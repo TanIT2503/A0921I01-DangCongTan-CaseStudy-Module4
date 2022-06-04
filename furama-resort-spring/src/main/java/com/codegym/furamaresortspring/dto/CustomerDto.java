@@ -8,15 +8,18 @@ import org.springframework.validation.Validator;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 public class CustomerDto implements Validator {
 
+	@Pattern(regexp = "^([KH-][0-9]{4})$", message = "Customer Id is not in the correct format.")
 	private String customerId;
 
 	@NotEmpty(message = "Do not empty.")
+	@Size(min = 2, max = 45, message = "The name is too long or too short.")
 	private String customerName;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")

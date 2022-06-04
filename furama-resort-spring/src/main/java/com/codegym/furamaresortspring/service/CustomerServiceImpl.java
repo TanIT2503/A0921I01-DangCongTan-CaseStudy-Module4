@@ -18,8 +18,8 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
-    public List<Customer> findAll() {
-        return customerRepository.findAll();
+    public List<Customer> findAllByNameAndType(String customerName) {
+        return customerRepository.findAllByNameAndType(customerName);
     }
 
     @Override
