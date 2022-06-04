@@ -1,20 +1,13 @@
 package com.codegym.furamaresortspring.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
 public class ServiceType {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +17,38 @@ public class ServiceType {
     @OneToMany(mappedBy = "serviceTypeId")
     @JsonBackReference
     List<ServiceResort> serviceResortServices = new ArrayList<>();
+
+    public ServiceType() {
+    }
+
+    public ServiceType(Long serviceTypeId, String serviceTypeName, List<ServiceResort> serviceResortServices) {
+        this.serviceTypeId = serviceTypeId;
+        this.serviceTypeName = serviceTypeName;
+        this.serviceResortServices = serviceResortServices;
+    }
+
+    public Long getServiceTypeId() {
+        return serviceTypeId;
+    }
+
+    public void setServiceTypeId(Long serviceTypeId) {
+        this.serviceTypeId = serviceTypeId;
+    }
+
+    public String getServiceTypeName() {
+        return serviceTypeName;
+    }
+
+    public void setServiceTypeName(String serviceTypeName) {
+        this.serviceTypeName = serviceTypeName;
+    }
+
+    public List<ServiceResort> getServiceResortServices() {
+        return serviceResortServices;
+    }
+
+    public void setServiceResortServices(List<ServiceResort> serviceResortServices) {
+        this.serviceResortServices = serviceResortServices;
+    }
+    
 }

@@ -18,15 +18,17 @@
                                             <label class="form-label" for="id">Customer Id</label>
                                             <input type="text" id="id" class="form-control form-control-lg"
                                                 th:field="*{customerId}" placeholder="Customer Id" />
-                                            <label th:if="${#fields.hasErrors('customerId')}" th:errors="*{customerId}"></label>
+                                            <label th:if="${#fields.hasErrors('customerId')}"
+                                                th:errors="*{customerId}"></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="FullName">Full Name</label>
                                             <input type="text" id="FullName" class="form-control form-control-lg"
-                                                   th:field="*{customerName}" placeholder="Full name" />
-                                            <label th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}"></label>
+                                                th:field="*{customerName}" placeholder="Full name" />
+                                            <label th:if="${#fields.hasErrors('customerName')}"
+                                                th:errors="*{customerName}"></label>
                                         </div>
                                     </div>
 
@@ -36,18 +38,19 @@
                                     <div class="col-md-6 mb-4 d-flex align-items-center">
                                         <div class="form-outline datepicker w-100">
                                             <label for="birthdayDate" class="form-label">Birthday</label>
-                                            <input type="date"  class="form-control form-control-lg"  id="birthdayDate"
+                                            <input type="date" class="form-control form-control-lg" id="birthdayDate"
                                                 th:field="*{customerBirthDate}" placeholder="Birthday" />
-                                            <label th:if="${#fields.hasErrors('customerBirthDate')}" th:errors="*{customerBirthDate}"></label>
+                                            <label th:if="${#fields.hasErrors('customerBirthDate')}"
+                                                th:errors="*{customerBirthDate}"></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <div class="form-outline">
                                             <label class="form-label" for="identifycard">Identify card</label>
                                             <input type="number" id="identifycard" class="form-control form-control-lg"
-                                                   th:field="*{customerIdentityCard}"
-                                                   placeholder="Identify card" />
-                                            <label th:if="${#fields.hasErrors('customerIdentityCard')}" th:errors="*{customerIdentityCard}"></label>
+                                                th:field="*{customerIdentityCard}" placeholder="Identify card" />
+                                            <label th:if="${#fields.hasErrors('customerIdentityCard')}"
+                                                th:errors="*{customerIdentityCard}"></label>
                                         </div>
                                     </div>
 
@@ -58,21 +61,22 @@
                                             <label class="form-label" for="emailAddress">Email</label>
                                             <input type="email" id="emailAddress" class="form-control form-control-lg"
                                                 th:field="*{customerEmail}" placeholder="Email" />
-                                            <label th:if="${#fields.hasErrors('customerEmail')}" th:errors="*{customerEmail}"></label>
+                                            <label th:if="${#fields.hasErrors('customerEmail')}"
+                                                th:errors="*{customerEmail}"></label>
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4">
                                         <h6 class="mb-2 pb-1">Gender: </h6>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                   id="femaleGender" value="option1" checked
-                                                   th:field="*{customerGender}" th:value="false" />
+                                                id="femaleGender" value="option1" checked th:field="*{customerGender}"
+                                                th:value="false" />
                                             <label class="form-check-label" for="femaleGender">Female</label>
                                         </div>
                                         <div class="form-check form-check-inline">
                                             <input class="form-check-input" type="radio" name="inlineRadioOptions"
-                                                   id="maleGender" value="option2" th:field="*{customerGender}"
-                                                   th:value="true" />
+                                                id="maleGender" value="option2" th:field="*{customerGender}"
+                                                th:value="true" />
                                             <label class="form-check-label" for="maleGender">Male</label>
                                         </div>
                                     </div>
@@ -83,18 +87,19 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="address">Address</label>
                                             <input type="tel" id="address" class="form-control form-control-lg"
-                                                   th:field="*{customerAddress}" placeholder="Address" />
+                                                th:field="*{customerAddress}" placeholder="Address" />
                                         </div>
                                     </div>
                                     <div class="col-md-6 mb-4 pb-2">
                                         <div class="form-outline">
                                             <label class="form-label select-label">Customer type</label>
-                                            <select class="select form-control-lg"
-                                                th:field="*{customerTypeId}">
+                                            <select class="select form-control-lg" th:field="*{customerTypeId}">
                                                 <option value="1" disabled>Choose option</option>
                                                 <option th:each="c : ${customerType}"
-                                                        th:value="${c.getCustomerTypeId()}" th:text="${c.getCustomerTypeName()}"
-                                                        th:selected="${c.getCustomerTypeId() == customerDto.customerTypeId.getCustomerTypeId()}"></option>
+                                                    th:value="${c.getCustomerTypeId()}"
+                                                    th:text="${c.getCustomerTypeName()}"
+                                                    th:selected="${c.getCustomerTypeId() == customerDto.customerTypeId.getCustomerTypeId()}">
+                                                </option>
                                             </select>
                                         </div>
                                     </div>

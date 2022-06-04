@@ -13,6 +13,6 @@ public class PositionServiceImpl implements PositionService{
 	PositionRepository positionRepository;
 	@Override
 	public List<Position> findAll() {
-		return null;
+		return positionRepository.findAll();
 	}
 }

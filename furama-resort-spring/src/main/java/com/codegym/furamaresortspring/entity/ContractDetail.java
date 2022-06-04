@@ -1,17 +1,9 @@
 package com.codegym.furamaresortspring.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class ContractDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,4 +16,47 @@ public class ContractDetail {
     private AttachService attachServiceId;
 
     private int quantity;
+
+    public ContractDetail() {
+    }
+
+    public ContractDetail(Long contactDetailId, Contract contractId, AttachService attachServiceId, int quantity) {
+        this.contactDetailId = contactDetailId;
+        this.contractId = contractId;
+        this.attachServiceId = attachServiceId;
+        this.quantity = quantity;
+    }
+
+    public Long getContactDetailId() {
+        return contactDetailId;
+    }
+
+    public void setContactDetailId(Long contactDetailId) {
+        this.contactDetailId = contactDetailId;
+    }
+
+    public Contract getContractId() {
+        return contractId;
+    }
+
+    public void setContractId(Contract contractId) {
+        this.contractId = contractId;
+    }
+
+    public AttachService getAttachServiceId() {
+        return attachServiceId;
+    }
+
+    public void setAttachServiceId(AttachService attachServiceId) {
+        this.attachServiceId = attachServiceId;
+    }
+
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
+    
 }

@@ -1,6 +1,5 @@
 package com.codegym.furamaresortspring.controller;
 
-import com.codegym.furamaresortspring.dto.CustomerDto;
 import com.codegym.furamaresortspring.dto.EmployeeDto;
 import com.codegym.furamaresortspring.entity.*;
 import com.codegym.furamaresortspring.service.DivisionService;

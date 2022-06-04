@@ -1,12 +1,10 @@
 package com.codegym.furamaresortspring.dto;
 
 import com.codegym.furamaresortspring.entity.*;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
-import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.Date;

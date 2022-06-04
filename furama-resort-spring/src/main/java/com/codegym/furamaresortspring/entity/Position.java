@@ -1,19 +1,11 @@
 package com.codegym.furamaresortspring.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 public class Position {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,4 +14,38 @@ public class Position {
 
     @OneToMany(mappedBy = "positionId")
     private List<Employee> employees = new ArrayList<>();
+
+    public Position() {
+    }
+
+    public Position(Long positionId, String positionName, List<Employee> employees) {
+        this.positionId = positionId;
+        this.positionName = positionName;
+        this.employees = employees;
+    }
+
+    public Long getPositionId() {
+        return positionId;
+    }
+
+    public void setPositionId(Long positionId) {
+        this.positionId = positionId;
+    }
+
+    public String getPositionName() {
+        return positionName;
+    }
+
+    public void setPositionName(String positionName) {
+        this.positionName = positionName;
+    }
+
+    public List<Employee> getEmployees() {
+        return employees;
+    }
+
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
+    }
+    
 }
