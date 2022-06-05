@@ -3,140 +3,147 @@
 <th:block th:include="fragments/head"></th:block>
 
 <body>
-<th:block th:include="fragments/navbarr"></th:block>
-<section class="vh-100 gradient-custom">
-	<div class="container py-5 h-100">
-		<div class="row justify-content-center align-items-center h-100">
-			<div class="col-12 col-lg-9 col-xl-7">
-				<div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
-					<div class="card-body p-4 p-md-5">
-						<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Customer</h3>
-						<form th:action="@{/employee/create}" method="post" th:object="${employeeDto}">
-							<div class="row">
-								<div class="col-md-6 mb-4">
-									<div class="form-outline">
-										<label class="form-label" for="id">Employee Id</label>
-										<input type="text" id="id" class="form-control form-control-lg"
-										       th:field="*{employeeId}" placeholder="Employee Id" />
-										<label th:if="${#fields.hasErrors('employeeId')}" th:errors="*{employeeId}"></label>
+	<th:block th:include="fragments/navbarr"></th:block>
+	<section class="vh-100 gradient-custom">
+		<div class="container py-5 h-100">
+			<div class="row justify-content-center align-items-center h-100">
+				<div class="col-12 col-lg-9 col-xl-7">
+					<div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+						<div class="card-body p-4 p-md-5">
+							<h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Employee</h3>
+							<form th:action="@{/employee/create}" method="post" th:object="${employeeDto}">
+								<div class="row">
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<label class="form-label" for="id">Employee Id</label>
+											<input type="text" id="id" class="form-control form-control-lg"
+												th:field="*{employeeId}" placeholder="Employee Id" />
+											<label th:if="${#fields.hasErrors('employeeId')}"
+												th:errors="*{employeeId}"></label>
+										</div>
 									</div>
-								</div>
-								<div class="col-md-6 mb-4">
-									<div class="form-outline">
-										<label class="form-label" for="FullName">Full Name</label>
-										<input type="text" id="FullName" class="form-control form-control-lg"
-										       th:field="*{employeeName}" placeholder="Full name" />
-										<label th:if="${#fields.hasErrors('employeeName')}" th:errors="*{employeeName}"></label>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<label class="form-label" for="FullName">Full Name</label>
+											<input type="text" id="FullName" class="form-control form-control-lg"
+												th:field="*{employeeName}" placeholder="Full name" />
+											<label th:if="${#fields.hasErrors('employeeName')}"
+												th:errors="*{employeeName}"></label>
+										</div>
 									</div>
+
 								</div>
 
-							</div>
+								<div class="row">
+									<div class="col-md-6 mb-4 d-flex align-items-center">
+										<div class="form-outline datepicker w-100">
+											<label for="birthdayDate" class="form-label">Birthday</label>
+											<input type="date" class="form-control form-control-lg" id="birthdayDate"
+												th:field="*{employeeBirthday}" placeholder="Birthday" />
+											<label th:if="${#fields.hasErrors('employeeBirthday')}"
+												th:errors="*{employeeBirthday}"></label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4">
+										<div class="form-outline">
+											<label class="form-label" for="identifycard">Identify card</label>
+											<input type="number" id="identifycard" class="form-control form-control-lg"
+												th:field="*{employeeIdentifyCard}" placeholder="Identify card" />
+											<label th:if="${#fields.hasErrors('employeeIdentifyCard')}"
+												th:errors="*{employeeIdentifyCard}"></label>
+										</div>
+									</div>
 
-							<div class="row">
-								<div class="col-md-6 mb-4 d-flex align-items-center">
-									<div class="form-outline datepicker w-100">
-										<label for="birthdayDate" class="form-label">Birthday</label>
-										<input type="date"  class="form-control form-control-lg"  id="birthdayDate"
-										       th:field="*{employeeBirthday}" placeholder="Birthday" />
-										<label th:if="${#fields.hasErrors('employeeBirthday')}" th:errors="*{employeeBirthday}"></label>
+								</div>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label" for="emailAddress">Email</label>
+											<input type="email" id="emailAddress" class="form-control form-control-lg"
+												th:field="*{employeeEmail}" placeholder="Email" />
+											<label th:if="${#fields.hasErrors('employeeEmail')}"
+												th:errors="*{employeeEmail}"></label>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label" for="salary">Salary</label>
+											<input type="number" id="salary" class="form-control form-control-lg"
+												th:field="*{employeeSalary}" placeholder="Salary" />
+											<label th:if="${#fields.hasErrors('employeeSalary')}"
+												th:errors="*{employeeSalary}"></label>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-6 mb-4">
-									<div class="form-outline">
-										<label class="form-label" for="identifycard">Identify card</label>
-										<input type="number" id="identifycard" class="form-control form-control-lg"
-										       th:field="*{employeeIdentifyCard}"
-										       placeholder="Identify card" />
-										<label th:if="${#fields.hasErrors('employeeIdentifyCard')}" th:errors="*{employeeIdentifyCard}"></label>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label" for="address">Address</label>
+											<input type="text" id="address" class="form-control form-control-lg"
+												th:field="*{employeeAddress}" placeholder="Address" />
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label" for="numberphone">Number Phone</label>
+											<input type="tel" id="numberphone" class="form-control form-control-lg"
+												th:field="*{employeeNumberPhone}" placeholder="Address" />
+											<label th:if="${#fields.hasErrors('employeeNumberPhone')}"
+												th:errors="*{employeeNumberPhone}"></label>
+										</div>
 									</div>
 								</div>
-
-							</div>
-							<div class="row">
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label" for="emailAddress">Email</label>
-										<input type="email" id="emailAddress" class="form-control form-control-lg"
-										       th:field="*{employeeEmail}" placeholder="Email" />
-										<label th:if="${#fields.hasErrors('employeeEmail')}" th:errors="*{employeeEmail}"></label>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label select-label">Position</label>
+											<select class="select form-control-lg" th:field="*{positionId}">
+												<option value="1" disabled>Choose option</option>
+												<option th:each="p : ${position}" th:value="${p.getPositionId()}"
+													th:text="${p.getPositionName()}"
+													th:selected="${p.getPositionId() == employeeDto.positionId.getPositionId()}">
+												</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label select-label">Division</label>
+											<select class="select form-control-lg" th:field="*{divisionId}">
+												<option value="1" disabled>Choose option</option>
+												<option th:each="d : ${division}" th:value="${d.getDivisionId()}"
+													th:text="${d.getDivisionName()}"
+													th:selected="${d.getDivisionId() == employeeDto.divisionId.getDivisionId()}">
+												</option>
+											</select>
+										</div>
 									</div>
 								</div>
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label" for="salary">Salary</label>
-										<input type="number" id="salary" class="form-control form-control-lg"
-										       th:field="*{employeeSalary}" placeholder="Salary" />
-										<label th:if="${#fields.hasErrors('employeeSalary')}" th:errors="*{employeeSalary}"></label>
+								<div class="row">
+									<div class="col-md-6 mb-4 pb-2">
+										<div class="form-outline">
+											<label class="form-label select-label">Education Degree:</label>
+											<select class="select form-control-lg" th:field="*{educationDegreeId}">
+												<option value="1" disabled>Choose option</option>
+												<option th:each="e : ${educationDegree}"
+													th:value="${e.getEducationDegreeId()}"
+													th:text="${e.getEducationDegreeName()}"
+													th:selected="${e.getEducationDegreeId() == employeeDto.educationDegreeId.getEducationDegreeId()}">
+												</option>
+											</select>
+										</div>
 									</div>
 								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label" for="address">Address</label>
-										<input type="text" id="address" class="form-control form-control-lg"
-										       th:field="*{employeeAddress}" placeholder="Address" />
-									</div>
+								<div class="mt-4 pt-2">
+									<input class="btn btn-primary btn-lg" type="submit" value="Submit" />
 								</div>
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label" for="numberphone">Number Phone</label>
-										<input type="tel" id="numberphone" class="form-control form-control-lg"
-										       th:field="*{employeeNumberPhone}" placeholder="Address" />
-										<label th:if="${#fields.hasErrors('employeeNumberPhone')}" th:errors="*{employeeNumberPhone}"></label>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label select-label">Position</label>
-										<select class="select form-control-lg"
-										        th:field="*{positionId}">
-											<option value="1" disabled>Choose option</option>
-											<option th:each="p : ${position}"
-											        th:value="${p.getPositionId()}" th:text="${p.getPositionName()}"
-											        th:selected="${p.getPositionId() == employeeDto.positionId.getPositionId()}"></option>
-										</select>
-									</div>
-								</div>
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label select-label">Division</label>
-										<select class="select form-control-lg"
-										        th:field="*{divisionId}">
-											<option value="1" disabled>Choose option</option>
-											<option th:each="d : ${division}"
-											        th:value="${d.getDivisionId()}" th:text="${d.getDivisionName()}"
-											        th:selected="${d.getDivisionId() == employeeDto.divisionId.getDivisionId()}"></option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="row">
-								<div class="col-md-6 mb-4 pb-2">
-									<div class="form-outline">
-										<label class="form-label select-label">Education Degree:</label>
-										<select class="select form-control-lg"
-										        th:field="*{educationDegreeId}">
-											<option value="1" disabled>Choose option</option>
-											<option th:each="e : ${educationDegree}"
-											        th:value="${e.getEducationDegreeId()}" th:text="${e.getEducationDegreeName()}"
-											        th:selected="${e.getEducationDegreeId() == employeeDto.educationDegreeId.getEducationDegreeId()}"></option>
-										</select>
-									</div>
-								</div>
-							</div>
-							<div class="mt-4 pt-2">
-								<input class="btn btn-primary btn-lg" type="submit" value="Submit" />
-							</div>
-						</form>
+							</form>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</section>
+	</section>
 </body>
 
 </html>

@@ -15,7 +15,8 @@ import java.util.List;
 
 public class CustomerDto implements Validator {
 
-	@Pattern(regexp = "^([KH-][0-9]{4})$", message = "Customer Id is not in the correct format.")
+	// @Pattern(regexp = "^([KH-][0-9]{4})$", message = "Customer Id is not in the
+	// correct format.")
 	private String customerId;
 
 	@NotEmpty(message = "Do not empty.")
@@ -23,7 +24,9 @@ public class CustomerDto implements Validator {
 	private String customerName;
 
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
-//    @Pattern(regexp = "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message = "Wrong Format Date.")
+	// @Pattern(regexp =
+	// "^([0-2][0-9]||3[0-1])/(0[0-9]||1[0-2])/([0-9][0-9])?[0-9][0-9]$", message =
+	// "Wrong Format Date.")
 	private Date customerBirthDate;
 	private boolean customerGender;
 
@@ -41,7 +44,9 @@ public class CustomerDto implements Validator {
 	public CustomerDto() {
 	}
 
-	public CustomerDto(String customerId , String customerName , Date customerBirthDate , boolean customerGender , String customerIdentityCard , String customerEmail , String customerAddress , List<Contract> contractDtoList , CustomerType customerTypeId) {
+	public CustomerDto(String customerId, String customerName, Date customerBirthDate, boolean customerGender,
+			String customerIdentityCard, String customerEmail, String customerAddress, List<Contract> contractDtoList,
+			CustomerType customerTypeId) {
 		this.customerId = customerId;
 		this.customerName = customerName;
 		this.customerBirthDate = customerBirthDate;
@@ -131,7 +136,7 @@ public class CustomerDto implements Validator {
 	}
 
 	@Override
-	public void validate(Object target , Errors errors) {
+	public void validate(Object target, Errors errors) {
 
 	}
 }

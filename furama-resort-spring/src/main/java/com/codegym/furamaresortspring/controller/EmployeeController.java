@@ -30,7 +30,7 @@ public class EmployeeController {
 	DivisionService divisionService;
 
 	@GetMapping("/list")
-	public String showListEmployee(@RequestParam(defaultValue = "") String key_employeeName, Model model){
+	public String showListEmployee(@RequestParam(defaultValue = "") String key_employeeName, Model model) {
 		List<Employee> employees = employeeService.findAllByEmployeeNameContaining(key_employeeName);
 		model.addAttribute("employees", employees);
 		model.addAttribute("position", positionService.findAll());
@@ -41,7 +41,7 @@ public class EmployeeController {
 	}
 
 	@GetMapping("/create")
-	public String create(Model model){
+	public String create(Model model) {
 		EmployeeDto employeeDto = new EmployeeDto();
 		employeeDto.setDivisionId(new Division());
 		employeeDto.setEducationDegreeId(new EducationDegree());
@@ -54,9 +54,10 @@ public class EmployeeController {
 	}
 
 	@PostMapping("/create")
-	public String create(@ModelAttribute("employeeDto") @Validated EmployeeDto employeeDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
+	public String create(@ModelAttribute("employeeDto") @Validated EmployeeDto employeeDto, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
 		new EmployeeDto().validate(employeeDto, bindingResult);
-		if (bindingResult.hasFieldErrors()){
+		if (bindingResult.hasFieldErrors()) {
 			model.addAttribute("position", positionService.findAll());
 			model.addAttribute("educationDegree", educationDegreeService.findAll());
 			model.addAttribute("division", divisionService.findAll());
@@ -65,8 +66,45 @@ public class EmployeeController {
 			Employee employee = new Employee();
 			BeanUtils.copyProperties(employeeDto, employee);
 			employeeService.create(employee);
-			redirectAttributes.addFlashAttribute("message", "Register user: " + employee.getEmployeeName()+ " done!");
+			redirectAttributes.addFlashAttribute("message", "Register user: " + employee.getEmployeeName() + " done!");
 			return "redirect:/employee/list";
 		}
+	}
+
+	@GetMapping("/update/{id}")
+	public String showUpdate(@PathVariable("id") String employeeId, Model model) {
+		EmployeeDto employeeDto = new EmployeeDto();
+		employeeDto.setDivisionId(new Division());
+		employeeDto.setEducationDegreeId(new EducationDegree());
+		employeeDto.setPositionId(new Position());
+		model.addAttribute("employeeDto", employeeService.findById(employeeId));
+		model.addAttribute("position", positionService.findAll());
+		model.addAttribute("educationDegree", educationDegreeService.findAll());
+		model.addAttribute("division", divisionService.findAll());
+		return "/employee/update";
+	}
+
+	@PostMapping("/update")
+	public String update(@ModelAttribute("employeeDto") @Validated EmployeeDto employeeDto, BindingResult bindingResult,
+			RedirectAttributes redirectAttributes, Model model) {
+		new EmployeeDto().validate(employeeDto, bindingResult);
+		if (bindingResult.hasFieldErrors()) {
+			model.addAttribute("position", positionService.findAll());
+			model.addAttribute("educationDegree", educationDegreeService.findAll());
+			model.addAttribute("division", divisionService.findAll());
+			return "/employee/create";
+		} else {
+			Employee employee = new Employee();
+			BeanUtils.copyProperties(employeeDto, employee);
+			employeeService.create(employee);
+			redirectAttributes.addFlashAttribute("message", "Register user: " + employee.getEmployeeName() + " done!");
+			return "redirect:/employee/list";
+		}
+	}
+
+	@GetMapping("/delete")
+	public String delete(@RequestParam String employeeId) {
+		employeeService.delete(employeeId);
+		return "redirect:/employee/list";
 	}
 }

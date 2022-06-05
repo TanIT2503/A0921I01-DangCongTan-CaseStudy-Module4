@@ -32,6 +32,7 @@
 body {
   background-image: linear-gradient(to right, #2d3953, #141d2d, #0d131e);
   color: rgb(255, 255, 255);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
 }
 
 .navbar {
@@ -103,6 +104,7 @@ ul li a {
   margin: 10px;
   background-color: #2f384e;
   height: 100%;
+  padding-bottom: 10px;
 }
 
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
@@ -146,4 +148,34 @@ option {
 .btn-link .card-link a {
   text-decoration: none;
   font-weight: bolder;
+}
+.form-control {
+  background-color: #ccdaff;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  width: 100%;
+  height: 40px;
+}
+
+.select {
+  background-color: #ccdaff;
+  border-radius: 10px;
+  border: none;
+  padding: 10px;
+  font-size: 1.2rem;
+  font-family: Lato, sans-serif;
+  width: 100%;
+  height: 40px;
+}
+.btn {
+  background-color: #0087ca;
+  color: #ffffff;
+  border-radius: 10px;
+  border: none;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif, sans-serif;
+  height: 40px;
+  text-align: center;
 }

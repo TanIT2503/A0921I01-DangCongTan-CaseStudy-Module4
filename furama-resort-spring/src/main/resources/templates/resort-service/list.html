@@ -7,7 +7,7 @@
 
 <div class="container-fluid w-95 pt-3">
 	<div class="row">
-		<div class="col-md-3" th:each="r : ${serviceResortServices}" th:object="${r}">
+		<div class="col-md-4 pb-3" th:each="r : ${serviceResortServices}" th:object="${r}">
 			<div class="card" style="width: 100%;">
 				<div class="card-body">
 					<div class="name">
@@ -55,7 +55,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-md-3">
+		<div class="col-md-4 pb-3">
 			<div class="card " style="width: 100%;">
 				<div class="card-body card-add">
 					<button class="btn-add" onclick="location.href='/resort-service/create';">
