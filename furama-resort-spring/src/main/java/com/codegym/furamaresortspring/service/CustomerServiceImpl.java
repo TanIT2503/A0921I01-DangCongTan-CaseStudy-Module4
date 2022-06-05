@@ -8,10 +8,11 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class CustomerServiceImpl implements CustomerService{
+public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
+
     @Override
     public void create(Customer customer) {
         customerRepository.save(customer);
@@ -37,5 +38,9 @@ public class CustomerServiceImpl implements CustomerService{
         return customerRepository.findById(customerId).orElse(null);
     }
 
+    @Override
+    public List<Customer> findAll() {
+        return customerRepository.findAll();
+    }
 
 }

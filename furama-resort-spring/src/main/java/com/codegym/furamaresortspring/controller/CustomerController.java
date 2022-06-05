@@ -1,6 +1,5 @@
 package com.codegym.furamaresortspring.controller;
 
-
 import com.codegym.furamaresortspring.dto.CustomerDto;
 import com.codegym.furamaresortspring.entity.Customer;
 import com.codegym.furamaresortspring.entity.CustomerType;
@@ -16,15 +15,11 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.persistence.EntityManager;
 import java.util.List;
 
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-
-    @Autowired
-    private EntityManager entityManager;
 
     @Autowired
     CustomerService customerService;
@@ -34,15 +29,16 @@ public class CustomerController {
     CustomerTypeRepository customerTypeRepository;
 
     @GetMapping("/home")
-    public String showListCustomer(@RequestParam(defaultValue = "") String key_customerName, Model model){
-        List<Customer>customers = customerService.findAllByNameAndType(key_customerName);
+    public String showListCustomer(@RequestParam(defaultValue = "") String key_customerName, Model model) {
+        List<Customer> customers = customerService.findAllByNameAndType(key_customerName);
         model.addAttribute("customers", customers);
         model.addAttribute("customerType", customerTypeService.findAll());
         model.addAttribute("key_customerName", key_customerName);
         return "/customer/home";
     }
+
     @GetMapping("/create")
-    public String create(Model model){
+    public String create(Model model) {
         CustomerDto customerDto = new CustomerDto();
         customerDto.setCustomerTypeId(new CustomerType());
         model.addAttribute("customerDto", customerDto);
@@ -51,16 +47,17 @@ public class CustomerController {
     }
 
     @PostMapping("/create")
-    public String create(@ModelAttribute("customerDto") @Validated CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
+    public String create(@ModelAttribute("customerDto") @Validated CustomerDto customerDto, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, Model model) {
         new CustomerDto().validate(customerDto, bindingResult);
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             model.addAttribute("customerType", customerTypeService.findAll());
             return "/customer/create";
         } else {
             Customer customer = new Customer();
             BeanUtils.copyProperties(customerDto, customer);
             customerService.create(customer);
-            redirectAttributes.addFlashAttribute("message", "Register user: " + customer.getCustomerName()+ " done!");
+            redirectAttributes.addFlashAttribute("message", "Register user: " + customer.getCustomerName() + " done!");
             return "redirect:/customer/home";
         }
     }
@@ -73,17 +70,19 @@ public class CustomerController {
         model.addAttribute("customerType", customerTypeService.findAll());
         return "/customer/update-customer";
     }
+
     @PostMapping("/update-customer")
-    public String update(@ModelAttribute("customerDto") @Validated CustomerDto customerDto, BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model){
+    public String update(@ModelAttribute("customerDto") @Validated CustomerDto customerDto, BindingResult bindingResult,
+            RedirectAttributes redirectAttributes, Model model) {
         new CustomerDto().validate(customerDto, bindingResult);
-        if (bindingResult.hasFieldErrors()){
+        if (bindingResult.hasFieldErrors()) {
             model.addAttribute("customerType", customerTypeService.findAll());
             return "/customer/update-customer";
         } else {
             Customer customer = new Customer();
             BeanUtils.copyProperties(customerDto, customer);
             customerService.create(customer);
-            redirectAttributes.addFlashAttribute("message", "Register user: " + customer.getCustomerName()+ " done!");
+            redirectAttributes.addFlashAttribute("message", "Register user: " + customer.getCustomerName() + " done!");
             return "redirect:/customer/home";
         }
     }

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<th:block th:include="fragments/head"></th:block>
+
+<body>
+    <th:block th:include="fragments/navbarr"></th:block>
+    <section class="vh-100 gradient-custom">
+        <div class="container py-5 h-100">
+            <div class="row justify-content-center align-items-center h-100">
+                <div class="col-12 col-lg-9 col-xl-7">
+                    <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
+                        <div class="card-body p-4 p-md-5">
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Contract</h3>
+                            <form th:action="@{/contract/create}" method="post" th:object="${contractDto}">
+                                <div class="row">
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="contract-start-date">Contract Start
+                                                Date</label>
+                                            <input type="date" id="contract-start-date"
+                                                class="form-control form-control-lg" th:field="*{contractStartDate}" />
+                                            <label th:if="${#fields.hasErrors('contractStartDate')}"
+                                                th:errors="*{contractStartDate}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="contract-end-date">Contract Start
+                                                Date</label>
+                                            <input type="date" id="contract-end-date"
+                                                class="form-control form-control-lg" th:field="*{contractEndDate}" />
+                                            <label th:if="${#fields.hasErrors('contractEndDate')}"
+                                                th:errors="*{contractEndDate}"></label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 d-flex align-items-center">
+                                        <div class="form-outline datepicker w-100">
+                                            <label for="contract deposit" class="form-label">Contract deposit</label>
+                                            <input type="number" class="form-control form-control-lg"
+                                                id="contract deposit" th:field="*{contractDeposit}" />
+                                            <label th:if="${#fields.hasErrors('contractDeposit')}"
+                                                th:errors="*{contractDeposit}"></label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4">
+                                        <div class="form-outline">
+                                            <label class="form-label" for="total-money">Total money</label>
+                                            <input type="number" id="total-money" class="form-control form-control-lg"
+                                                th:field="*{contractTotalMoney}" />
+                                            <label th:if="${#fields.hasErrors('contractTotalMoney')}"
+                                                th:errors="*{contractTotalMoney}"></label>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label select-label">Employee</label>
+                                            <select class="select form-control-lg" th:field="*{employeeId}">
+                                                <option value="1" disabled>Choose option</option>
+                                                <option th:each="e : ${employee}" th:value="${e.getEmployeeId()}"
+                                                    th:text="${e.getEmployeeName()}"
+                                                    th:selected="${e.getEmployeeId() == contractDto.employeeId.getEmployeeId()}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label select-label">Employee</label>
+                                            <select class="select form-control-lg" th:field="*{customerId}">
+                                                <option value="1" disabled>Choose option</option>
+                                                <option th:each="c : ${customer}" th:value="${c.getCustomerId()}"
+                                                    th:text="${c.getCustomerName()}"
+                                                    th:selected="${c.getCustomerId() == contractDto.customerId.getCustomerId()}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6 mb-4 pb-2">
+                                        <div class="form-outline">
+                                            <label class="form-label select-label">Service</label>
+                                            <select class="select form-control-lg" th:field="*{serviceResortId}">
+                                                <option value="1" disabled>Choose option</option>
+                                                <option th:each="s : ${serviceResort}"
+                                                    th:value="${s.getServiceResortId()}"
+                                                    th:text="${s.getServiceResortName()}"
+                                                    th:selected="${s.getServiceResortId() == contractDto.serviceResortId.getServiceResortId()}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="mt-4 pt-2">
+                                    <input class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

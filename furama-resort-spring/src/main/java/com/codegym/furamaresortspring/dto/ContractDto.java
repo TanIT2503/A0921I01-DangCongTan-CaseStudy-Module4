@@ -1,39 +1,44 @@
-package com.codegym.furamaresortspring.entity;
+package com.codegym.furamaresortspring.dto;
 
-import javax.persistence.*;
+import java.sql.Date;
+
+import javax.validation.constraints.Min;
 
 import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.validation.Errors;
+import org.springframework.validation.Validator;
 
-import java.util.Date;
+import com.codegym.furamaresortspring.entity.ContractDetail;
+import com.codegym.furamaresortspring.entity.Customer;
+import com.codegym.furamaresortspring.entity.Employee;
+import com.codegym.furamaresortspring.entity.ServiceResort;
 
-@Entity
-public class Contract {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class ContractDto implements Validator {
     private Long contractId;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date contractStartDate;
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private Date contractEndDate;
+    @Min(value = 0, message = "Not less than 0.")
     private double contractDeposit;
+    @Min(value = 0, message = "Not less than 0.")
     private double contractTotalMoney;
 
-    @ManyToOne(targetEntity = Employee.class)
     private Employee employeeId;
-    @ManyToOne(targetEntity = Customer.class)
     private Customer customerId;
-    @ManyToOne(targetEntity = ServiceResort.class)
     private ServiceResort serviceResortId;
 
-    @OneToOne(mappedBy = "contractId")
     private ContractDetail contractDetail;
 
-    public Contract() {
+    public ContractDto() {
     }
 
-    public Contract(Long contractId, Date contractStartDate, Date contractEndDate, double contractDeposit,
-            double contractTotalMoney, Employee employeeId, Customer customerId, ServiceResort serviceResortId,
-            ContractDetail contractDetail) {
+    public ContractDto(Long contractId, Date contractStartDate, Date contractEndDate,
+            @Min(value = 0, message = "Not less than 0.") double contractDeposit,
+            @Min(value = 0, message = "Not less than 0.") double contractTotalMoney, Employee employeeId,
+            Customer customerId, ServiceResort serviceResortId, ContractDetail contractDetail) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
@@ -115,6 +120,18 @@ public class Contract {
 
     public void setContractDetail(ContractDetail contractDetail) {
         this.contractDetail = contractDetail;
+    }
+
+    @Override
+    public boolean supports(Class<?> clazz) {
+        // TODO Auto-generated method stub
+        return false;
+    }
+
+    @Override
+    public void validate(Object target, Errors errors) {
+        // TODO Auto-generated method stub
+
     }
 
 }
