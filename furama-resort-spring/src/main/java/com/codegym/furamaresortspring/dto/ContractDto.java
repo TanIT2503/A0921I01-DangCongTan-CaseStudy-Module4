@@ -1,7 +1,5 @@
 package com.codegym.furamaresortspring.dto;
 
-import java.sql.Date;
-
 import javax.validation.constraints.Min;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -12,6 +10,10 @@ import com.codegym.furamaresortspring.entity.ContractDetail;
 import com.codegym.furamaresortspring.entity.Customer;
 import com.codegym.furamaresortspring.entity.Employee;
 import com.codegym.furamaresortspring.entity.ServiceResort;
+
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 public class ContractDto implements Validator {
     private Long contractId;
@@ -30,15 +32,12 @@ public class ContractDto implements Validator {
     private Customer customerId;
     private ServiceResort serviceResortId;
 
-    private ContractDetail contractDetail;
+    List<ContractDetail> contractDetailList = new ArrayList<>();
 
     public ContractDto() {
     }
 
-    public ContractDto(Long contractId, Date contractStartDate, Date contractEndDate,
-            @Min(value = 0, message = "Not less than 0.") double contractDeposit,
-            @Min(value = 0, message = "Not less than 0.") double contractTotalMoney, Employee employeeId,
-            Customer customerId, ServiceResort serviceResortId, ContractDetail contractDetail) {
+    public ContractDto(Long contractId , Date contractStartDate , Date contractEndDate , double contractDeposit , double contractTotalMoney , Employee employeeId , Customer customerId , ServiceResort serviceResortId , List<ContractDetail> contractDetailList) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
@@ -47,7 +46,7 @@ public class ContractDto implements Validator {
         this.employeeId = employeeId;
         this.customerId = customerId;
         this.serviceResortId = serviceResortId;
-        this.contractDetail = contractDetail;
+        this.contractDetailList = contractDetailList;
     }
 
     public Long getContractId() {
@@ -114,12 +113,12 @@ public class ContractDto implements Validator {
         this.serviceResortId = serviceResortId;
     }
 
-    public ContractDetail getContractDetail() {
-        return contractDetail;
+    public List<ContractDetail> getContractDetailList() {
+        return contractDetailList;
     }
 
-    public void setContractDetail(ContractDetail contractDetail) {
-        this.contractDetail = contractDetail;
+    public void setContractDetailList(List<ContractDetail> contractDetailList) {
+        this.contractDetailList = contractDetailList;
     }
 
     @Override

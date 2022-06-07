@@ -4,7 +4,9 @@ import javax.persistence.*;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Contract {
@@ -25,15 +27,13 @@ public class Contract {
     @ManyToOne(targetEntity = ServiceResort.class)
     private ServiceResort serviceResortId;
 
-    @OneToOne(mappedBy = "contractId")
-    private ContractDetail contractDetail;
+    @OneToMany(mappedBy = "contractId")
+    List<ContractDetail> contractDetailList = new ArrayList<>();
 
     public Contract() {
     }
 
-    public Contract(Long contractId, Date contractStartDate, Date contractEndDate, double contractDeposit,
-            double contractTotalMoney, Employee employeeId, Customer customerId, ServiceResort serviceResortId,
-            ContractDetail contractDetail) {
+    public Contract(Long contractId , Date contractStartDate , Date contractEndDate , double contractDeposit , double contractTotalMoney , Employee employeeId , Customer customerId , ServiceResort serviceResortId , List<ContractDetail> contractDetailList) {
         this.contractId = contractId;
         this.contractStartDate = contractStartDate;
         this.contractEndDate = contractEndDate;
@@ -42,7 +42,7 @@ public class Contract {
         this.employeeId = employeeId;
         this.customerId = customerId;
         this.serviceResortId = serviceResortId;
-        this.contractDetail = contractDetail;
+        this.contractDetailList = contractDetailList;
     }
 
     public Long getContractId() {
@@ -109,12 +109,11 @@ public class Contract {
         this.serviceResortId = serviceResortId;
     }
 
-    public ContractDetail getContractDetail() {
-        return contractDetail;
+    public List<ContractDetail> getContractDetailList() {
+        return contractDetailList;
     }
 
-    public void setContractDetail(ContractDetail contractDetail) {
-        this.contractDetail = contractDetail;
+    public void setContractDetailList(List<ContractDetail> contractDetailList) {
+        this.contractDetailList = contractDetailList;
     }
-
 }

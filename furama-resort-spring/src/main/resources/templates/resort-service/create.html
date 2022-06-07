@@ -46,7 +46,7 @@
                                         <div class="form-outline datepicker w-100">
                                             <label for="Other" class="form-label">Other</label>
                                             <input type="text" class="form-control form-control-lg" id="Other"
-                                                   th:field="*{descriptionOtherConvenience}" placeholder="Birthday" />
+                                                   th:field="*{descriptionOtherConvenience}" placeholder="Description" />
                                             <label th:if="${#fields.hasErrors('descriptionOtherConvenience')}" th:errors="*{descriptionOtherConvenience}"></label>
                                         </div>
 
@@ -57,7 +57,7 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="MaxPeople">Max people</label>
                                             <input type="number" id="MaxPeople" class="form-control form-control-lg"
-                                                th:field="*{serviceResortMaxPeople}" placeholder="Email" />
+                                                th:field="*{serviceResortMaxPeople}" placeholder="Max people" />
                                             <label th:if="${#fields.hasErrors('serviceResortMaxPeople')}" th:errors="*{serviceResortMaxPeople}"></label>
                                         </div>
                                     </div>
@@ -65,7 +65,7 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="StandardRoom">Standard Room</label>
                                             <input type="text" id="StandardRoom" class="form-control form-control-lg"
-                                                th:field="*{standardRoom}" placeholder="Address" />
+                                                th:field="*{standardRoom}" placeholder="Standard room" />
                                             <label th:if="${#fields.hasErrors('standardRoom')}" th:errors="*{standardRoom}"></label>
                                         </div>
                                     </div>
@@ -83,7 +83,7 @@
                                         <div class="form-outline">
                                             <label class="form-label" for="NumberFloors">Number Floors</label>
                                             <input type="number" id="NumberFloors" class="form-control form-control-lg"
-                                                   th:field="*{numberOfFloors}" placeholder="Address" />
+                                                   th:field="*{numberOfFloors}" placeholder="Number of floors" />
                                             <label th:if="${#fields.hasErrors('numberOfFloors')}" th:errors="*{numberOfFloors}"></label>
                                         </div>
                                     </div>
@@ -91,7 +91,7 @@
                                 <div class="row">
                                     <div class="col-md-6 mb-4 pb-2">
                                         <div class="form-outline">
-                                            <label class="form-label select-label">Customer type</label>
+                                            <label class="form-label select-label">Service type</label>
                                             <select class="select form-control-lg"
                                                     th:field="*{serviceTypeId}">
                                                 <option value="1" disabled>Choose option</option>
@@ -103,7 +103,7 @@
                                     </div>
                                     <div class="col-md-6 mb-4 pb-2">
                                         <div class="form-outline">
-                                            <label class="form-label select-label">Customer type</label>
+                                            <label class="form-label select-label">Rent type</label>
                                             <select class="select form-control-lg"
                                                     th:field="*{rentTypeId}">
                                                 <option value="1" disabled>Choose option</option>
