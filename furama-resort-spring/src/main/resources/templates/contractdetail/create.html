@@ -10,7 +10,7 @@
                 <div class="col-12 col-lg-9 col-xl-7">
                     <div class="card shadow-2-strong card-registration" style="border-radius: 15px;">
                         <div class="card-body p-4 p-md-5">
-                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Contract deatil</h3>
+                            <h3 class="mb-4 pb-2 pb-md-0 mb-md-5">Create a new Contract detail</h3>
                             <form th:action="@{/contractdetail/create}" method="post" th:object="${contractDetailDto}">
                                 <div class="row">
                                     <div class="col-md-6 mb-4 pb-2">
@@ -44,10 +44,8 @@
                                     <div class="col-md-6 mb-4 d-flex align-items-center">
                                         <div class="form-outline datepicker w-100">
                                             <label for="quantity" class="form-label">Quantity</label>
-                                            <input type="number" class="form-control form-control-lg" id="quantity"
-                                                th:field="*{quantity}" />
-                                            <label th:if="${#fields.hasErrors('quantity')}"
-                                                th:errors="*{quantity}"></label>
+                                            <input type="number" class="form-control form-control-lg" id="quantity" th:field="*{quantity}" />
+                                            <label th:if="${#fields.hasErrors('quantity')}" th:errors="*{quantity}"></label>
                                         </div>
                                     </div>
 

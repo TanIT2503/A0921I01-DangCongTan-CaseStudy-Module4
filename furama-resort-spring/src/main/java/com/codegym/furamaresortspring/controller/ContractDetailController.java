@@ -2,6 +2,7 @@ package com.codegym.furamaresortspring.controller;
 
 import java.util.List;
 
+import com.codegym.furamaresortspring.service.ContractService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,10 +30,14 @@ public class ContractDetailController {
     @Autowired
     private AttachServiceService attachServiceService;
 
+    @Autowired
+    private ContractService contractService;
+
     @GetMapping("/list")
     public String listContractDetail(Model model) {
         List<ContractDetail> contractDetails = contractDetailService.findAll();
         model.addAttribute("contractDetails", contractDetails);
+        model.addAttribute("contract", contractService.findAll());
         model.addAttribute("attachServiceService", attachServiceService.findAll());
         return "/contractdetail/list";
     }
@@ -43,7 +48,7 @@ public class ContractDetailController {
         contractDetailDto.setContractId(new Contract());
         contractDetailDto.setAttachServiceId(new AttachService());
         model.addAttribute("contractDetailDto", contractDetailDto);
-        model.addAttribute("contract", contractDetailService.findAll());
+        model.addAttribute("contract", contractService.findAll());
         model.addAttribute("attachService", attachServiceService.findAll());
         return "/contractdetail/create";
     }
@@ -53,7 +58,8 @@ public class ContractDetailController {
             BindingResult bindingResult, RedirectAttributes redirectAttributes, Model model) {
         new ContractDetailDto().validate(contractDetailDto, bindingResult);
         if (bindingResult.hasFieldErrors()) {
-            model.addAttribute("contract", contractDetailService.findAll());
+            model.addAttribute("contractDetailDto", contractDetailDto);
+            model.addAttribute("contract", contractService.findAll());
             model.addAttribute("attachService", attachServiceService.findAll());
             return "/contractdetail/create";
         } else {

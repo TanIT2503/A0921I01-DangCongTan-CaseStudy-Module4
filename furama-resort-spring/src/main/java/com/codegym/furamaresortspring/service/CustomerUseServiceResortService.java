@@ -5,5 +5,5 @@ import java.util.List;
 import com.codegym.furamaresortspring.dto.CustomerUseServiceResortDto;
 
 public interface CustomerUseServiceResortService {
-    List<CustomerUseServiceResortDto> findAll();
+    List<CustomerUseServiceResortDto> findAllCustomer();
 }

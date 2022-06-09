@@ -14,7 +14,7 @@ public class CustomerUseServiceResortServiceImpl implements CustomerUseServiceRe
     CustomerUseServiceResortRepository customerUseServiceResortRepository;;
 
     @Override
-    public List<CustomerUseServiceResortDto> findAll() {
-        return customerUseServiceResortRepository.findAll();
+    public List<CustomerUseServiceResortDto> findAllCustomer() {
+        return customerUseServiceResortRepository.findAllCustomer();
     }
 }

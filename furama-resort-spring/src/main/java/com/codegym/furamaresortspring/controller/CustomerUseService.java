@@ -25,42 +25,11 @@ public class CustomerUseService {
     @Autowired
     private CustomerUseServiceResortService customerUseServiceResortService;
 
-    @Autowired
-    private CustomerService customerService;
-
-    @Autowired
-    private CustomerTypeService customerTypeService;
-
-    @Autowired
-    private ContractService contractService;
-
-    @Autowired
-    private ServiceResortService serviceResortService;
-
-    @Autowired
-    private RentTypeService rentTypeService;
-
-    @Autowired
-    private ServiceTypeService serviceTypeService;
-
-    @Autowired
-    private ContractDetailService contractDetailService;
-
-    @Autowired
-    private AttachServiceService attachServiceService;
 
     @GetMapping("/list")
     public String list(Model model) {
-        List<CustomerUseServiceResortDto> customerUseServiceResortDtos = customerUseServiceResortService.findAll();
+        List<CustomerUseServiceResortDto> customerUseServiceResortDtos = customerUseServiceResortService.findAllCustomer();
         model.addAttribute("customerUseServiceResortDtos", customerUseServiceResortDtos);
-        model.addAttribute("customers", customerService.findAll());
-        model.addAttribute("customerTypes", customerTypeService.findAll());
-        model.addAttribute("contracts", contractService.findAll());
-        model.addAttribute("serviceResorts", serviceResortService.findAll());
-        model.addAttribute("rentTypes", rentTypeService.findAll());
-        model.addAttribute("serviceTypes", serviceTypeService.findAll());
-        model.addAttribute("contractDetails", contractDetailService.findAll());
-        model.addAttribute("attachServices", attachServiceService.findAll());
         return "customer-use-service/list";
     }
 }

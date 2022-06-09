@@ -14,7 +14,7 @@
                         </div>
                         <div class="contract row">
                             <h6 class="card-subtitle mb-2 text-muted col-md-5">Contract id:</h6>
-                            <h6 class="card-subtitle mb-2 text-muted col-md-7" th:text="${c.contractId}"></h6>
+                            <h6 class="card-subtitle mb-2 text-muted col-md-7" th:if="${c.contractId != null}" th:text="${c.contractId.contractId}"></h6>
                         </div>
                         <div class="attachservice row">
                             <h6 class="card-subtitle mb-2 text-muted col-md-5">Attach Service:</h6>
